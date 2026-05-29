@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #2F3136;
+}
+
+.app-container {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #F4F5F7; 
+}
+
+.scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #2F3136;
+  padding-bottom: 60px;
+}
+
+/* Header & Top Card */
+.header { padding: 40px 24px 20px; }
+.headerChild1 { color: #A0A0A0; font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+.headerChild2 { color: #EB5B31; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }
+
+.bottom-sheet {
+  background-color: #F4F5F7;
+  border-radius: 28px 28px 0 0;
+  padding: 0 24px 24px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px 24px 20px 24px;
+  margin-top: -65px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.card-name { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 6px; }
+.card-ph { font-size: 15px; color: #666; margin-bottom: 16px; }
+.divider { height: 1px; background-color: #F0F0F0; margin: 16px 0; }
+.divider-spacing { height: 1px; background-color: #F0F0F0; margin-bottom: 16px; }
+
+.order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.order-number { color: #888; font-size: 14px; font-weight: 600; }
+.view-order { color: #888; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.product-desc { font-size: 14px; color: #666; margin-bottom: 8px; }
+
+.order-details { margin-bottom: 10px; }
+.detail-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.detail-label { color: #111; font-size: 15px; }
+.detail-value { color: #111; font-size: 15px; }
+
+.saving-badge-wrapper { display: flex; justify-content: flex-end; margin-right: -24px; }
+.saving-badge { display: flex; align-items: center; gap: 8px; background: #FFEBE6; padding: 8px 16px; border-radius: 20px 0 0 20px; }
+.badge-text { font-size: 12px; color: #EB5B31; font-weight: 500; }
+
+.payable-section { display: flex; justify-content: space-between; align-items: center; }
+.payable-label { font-size: 15px; color: #666; font-weight: 600; }
+.payable-amount { font-size: 18px; font-weight: 600; color: #333; }
+
+/* Payment Options */
+.payment-container { display: flex; flex-direction: column; }
+.payment-header { font-size: 13px; color: #888; font-weight: 500; margin-bottom: 14px; }
+
+.payment-method {
+  background: #FFFFFF;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #EAEAEA;
+  transition: border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-method.active {
+  border: 1px solid #EB5B31;
+}
+
+.payment-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #EAEAEA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+  flex: 1;
+}
+
+.chevron-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth Height Transition using CSS Grid
+  This animates cleanly from 0px to the exact dynamic height of the content!
+*/
+.expanded-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expanded-wrapper.open {
+  grid-template-rows: 1fr;
+}
+
+.expanded-content-inner {
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.expanded-wrapper.open .expanded-content-inner {
+  opacity: 1;
+  transition: opacity 0.4s ease-out 0.1s; /* Delayed fade in */
+}
+
+.expanded-content {
+  padding: 0 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Styles */
+.input-label { font-size: 12px; color: #888; margin-bottom: 6px; display: block; }
+.input-field {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: #F4F5F7;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+}
+.input-field:focus { outline: none; border-color: #ccc; }
+.input-field::placeholder { color: #999; }
+.mb-16 { margin-bottom: 16px; }
+
+.form-row { display: flex; gap: 16px; }
+.flex-row { display: flex; gap: 8px; }
+.flex-1 { flex: 1; }
+.flex-2 { flex: 1.5; }
+
+.upi-label { text-transform: none; }
+.verify-btn {
+  padding: 14px;
+  background: #EB5B31;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Checkbox */
+.checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 4px; }
+.custom-checkbox { margin-top: 2px; accent-color: #1976D2; width: 16px; height: 16px; cursor: pointer; }
+.checkbox-text { font-size: 12px; color: #666; line-height: 1.4; }
+.learn-more { color: #00A651; cursor: pointer; font-weight: 500; }
+
+/* Grid for Banks/Wallets */
+.brand-grid { display: flex; gap: 32px; justify-content: center; padding: 16px 0 24px 0; }
+.bank-grid { gap: 40px; }
+.brand-item { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
+.brand-item span { font-size: 12px; color: #666; }
+
+/* Select Dropdowns */
+.select-dropdown {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+.select-dropdown:focus { outline: none; border-color: #111; }
+
+/* Footer */
+.powered-by {
+  text-align: center;
+  padding: 24px 0 16px;
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.powered-by-logo { font-weight: 500; color: #333; display: flex; align-items: center; }
+.s-box {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0 4px;
+  margin-right: 1px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.proceed-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #7A7A7A;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 18px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  z-index: 10;
+}
+.proceed-footer:hover { background-color: #666666; }
